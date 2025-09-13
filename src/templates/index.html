@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PubMed Author Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔬 PubMed Author Finder</h1>
+            <p class="subtitle">Know a topic? Pull up articles. Meet authors. Make contact.</p>
+        </header>
+
+        <main>
+            <div class="search-section">
+                <form id="searchForm" class="search-form">
+                    <div class="form-group">
+                        <label for="searchterm">Search Term</label>
+                        <input type="text" id="searchterm" name="searchterm" 
+                               placeholder="e.g., cancer immunotherapy" 
+                               required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mode">Output Mode</label>
+                            <select id="mode" name="mode">
+                                {% for option in output_options %}
+                                <option value="{{ option }}" 
+                                        {% if option == 'overview' %}selected{% endif %}>
+                                    {{ option.title() }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="searchnumber">Number of Results</label>
+                            <input type="number" id="searchnumber" name="searchnumber" 
+                                   value="10" min="1" max="100">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sortby">Sort By</label>
+                            <select id="sortby" name="sortby">
+                                {% for option in sort_options %}
+                                <option value="{{ option }}" 
+                                        {% if option == 'relevance' %}selected{% endif %}>
+                                    {{ option.replace('_', ' ').title() }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Filter by Email (optional)</label>
+                            <input type="email" id="email" name="email" 
+                                   placeholder="author@example.com">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="search-btn">
+                        <span class="btn-text">Search PubMed</span>
+                        <span class="loading-spinner" style="display: none;">Searching...</span>
+                    </button>
+                </form>
+            </div>
+
+            <div id="results" class="results-section" style="display: none;">
+                <h2>Results</h2>
+                <div id="resultsContent"></div>
+            </div>
+
+            <div id="error" class="error-section" style="display: none;">
+                <h3>Error</h3>
+                <p id="errorMessage"></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>
+                Built with ❤️ using the PubMed Author Finder API | 
+                <a href="https://github.com/nitahieb/pubmed-author-finder" target="_blank">
+                    View on GitHub
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

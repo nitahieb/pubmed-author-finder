@@ -4,6 +4,35 @@
 
 PubMed Author Finder helps you quickly find research papers on any topic and gives you author contact info so you can reach out faster.
 
+## 🌐 Web Application
+
+The easiest way to use PubMed Author Finder is through our modern web interface:
+
+### Quick Start
+1. **Clone and run locally:**
+```bash
+git clone https://github.com/nitahieb/pubmed-author-finder.git
+cd pubmed-author-finder
+poetry install
+cd src
+poetry run python webapp.py
+```
+
+2. **Open your browser and go to:** `http://localhost:5000`
+
+3. **Search away!** Enter your research topic, choose your output mode, and click "Search PubMed"
+
+### Web Interface Features
+- **Modern, responsive design** that works on desktop and mobile
+- **Real-time search** with all the same options as the CLI
+- **Two output modes:**
+  - **Overview:** Beautiful formatted article summaries with author information
+  - **Emails:** Clean list of author email addresses
+- **Flexible filtering:** Sort by relevance, date, author, or journal name
+- **Easy deployment:** See [DEPLOYMENT.md](DEPLOYMENT.md) for production setup
+
+![Web Interface](https://github.com/user-attachments/assets/8569688c-9328-4258-adcf-78d62dc23957)
+
 ---
 
 ##  What Is It
