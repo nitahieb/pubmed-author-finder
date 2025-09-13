@@ -2,3 +2,7 @@
 src/__pycache__/*
 tests/__pycache__/*
 .coverage
+build/
+*.egg-info/
+dist/
+.venv/
