@@ -1,0 +1,44 @@
+# =========================================
+# General
+# =========================================
+.git
+.gitignore
+Dockerfile
+.dockerignore
+README.md
+*.md
+
+# =========================================
+# Python
+# =========================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# =========================================
+# Virtual environments
+# =========================================
+.venv/
+env/
+venv/
+
+# =========================================
+# Node / React
+# =========================================
+frontend/node_modules/
+frontend/.cache/
+frontend/dist/
+npm-debug.log
+yarn-error.log
+
+# =========================================
+# Test / local artifacts
+# =========================================
+*.log
+.coverage
+.pytest_cache/
+.mypy_cache/
+ruff_cache/

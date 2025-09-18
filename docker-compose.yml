@@ -1,0 +1,30 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: scholarseek_backend
+    networks:
+      default:
+        aliases:
+          - backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+  web:  # combined frontend + nginx
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: scholarseek_web
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+
+
+networks:
+  default:
+    name: scholarseek_net
